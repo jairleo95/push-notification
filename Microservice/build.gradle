@@ -1,11 +1,15 @@
 buildscript {
+    ext {
+        springBootVersion = '1.5.9.RELEASE'
+    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
+
 
 apply plugin: 'idea'
 apply plugin: 'eclipse'
@@ -23,18 +27,27 @@ bootRun {
     addResources = true
 }
 bootRepackage {
-    mainClass = 'com.hpe.dsp.Application'
+    mainClass = 'com.app.Application'
 }
 repositories {
     mavenCentral()
 }
 
 dependencies {
-     compile group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
-     compile("org.springframework.boot:spring-boot-starter-websocket")
+    [
+            compile("org.springframework.boot:spring-boot-starter-websocket"),
+            compile('org.springframework.boot:spring-boot-starter-actuator')
+    ].each { dep ->
+        compile(dep) {
+            exclude module: "log4j-over-slf4j"
+            exclude module: "logback-classic"
+        }
+    }
+
+
      compile("org.webjars:webjars-locator")
-    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.5.6.RELEASE'
+
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
 
     // https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
     compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.3.RELEASE'

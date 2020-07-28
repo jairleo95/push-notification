@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" tools:context="pe.entel.notify.NotifyActivity">
+    <!-- Search / will display always -->
+    <item
+        android:id="@+id/action_cart"
+        android:icon="@drawable/ic_menu_cart"
+        android:title="@string/action_favorite"
+        app:showAsAction="always" />
+</menu>

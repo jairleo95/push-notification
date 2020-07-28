@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Entel Client WebSocket</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="_search">Search</string>
+
+    <string name="placeholder">Send chat message</string>
+    <string name="action_favorite">0</string>
+</resources>

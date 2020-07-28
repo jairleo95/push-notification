@@ -1,0 +1,49 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
+
+apply plugin: 'idea'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+
+jar {
+    baseName = 'WebsocketNotify'
+    version =  '0.1.0'
+}
+bootRun {
+    addResources = true
+}
+bootRepackage {
+    mainClass = 'com.hpe.dsp.Application'
+}
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+     compile group: 'com.google.code.gson', name: 'gson', version: '2.3.1'
+     compile("org.springframework.boot:spring-boot-starter-websocket")
+     compile("org.webjars:webjars-locator")
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '1.5.6.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.springframework.security/spring-security-core
+    compile group: 'org.springframework.security', name: 'spring-security-core', version: '4.2.3.RELEASE'
+
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-log4j2
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-log4j2', version: '2.0.0.RELEASE'
+
+
+    testCompile("org.springframework.boot:spring-boot-starter-test")
+
+}
+
